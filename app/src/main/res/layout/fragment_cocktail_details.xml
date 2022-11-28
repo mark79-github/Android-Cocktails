@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.martinbg.androidcocktails.db.relation.CocktailAndFavourite" />
+
+        <variable
+            name="hasIngredients"
+            type="Boolean" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/btn_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cocktail_btn_like_image_description"
+                android:src="@android:drawable/star_big_off"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_flag"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/cocktail_logo_image_description"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                tools:src="@android:drawable/star_big_off" />
+
+            <TextView
+                android:id="@+id/tv_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cocktail_name_label"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_flag" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strDrink}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_label"
+                tools:text="Name" />
+
+            <TextView
+                android:id="@+id/tv_type_of_glass_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/cocktail_type_of_glass_label"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                app:visibleGone="@{model.cocktail.strGlass}" />
+
+            <TextView
+                android:id="@+id/tv_type_of_glass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strGlass}"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_type_of_glass_label"
+                app:visibleGone="@{model.cocktail.strGlass}"
+                tools:text="Symbol" />
+
+            <TextView
+                android:id="@+id/tv_instructions_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/cocktail_instructions_label"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_type_of_glass"
+                app:visibleGone="@{model.cocktail.strInstructions}" />
+
+            <TextView
+                android:id="@+id/tv_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strInstructions}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_instructions_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_instructions_label"
+                app:visibleGone="@{model.cocktail.strInstructions}"
+                tools:text="Instructions" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/cocktail_recipe_label"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:labelGone="@{hasIngredients}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_instructions" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure1}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_label"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure1}"
+                tools:text="Ingredients1" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure2}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_1"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure2}"
+                tools:text="Ingredients2" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure3}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_2"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure3}"
+                tools:text="Ingredients3" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure4}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_3"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure4}"
+                tools:text="Ingredients4" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure5}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_4"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure5}"
+                tools:text="Ingredients5" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure6}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_5"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure6}"
+                tools:text="Ingredients6" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure7}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_6"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure7}"
+                tools:text="Ingredients7" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure8}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_7"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure8}"
+                tools:text="Ingredients8" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure9}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_8"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure9}"
+                tools:text="Ingredients9" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure10}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_9"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure10}"
+                tools:text="Ingredients10" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure11}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_10"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure11}"
+                tools:text="Ingredients11" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure12}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_11"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure12}"
+                tools:text="Ingredients12" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure13}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_12"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure13}"
+                tools:text="Ingredients13" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure14}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_13"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure14}"
+                tools:text="Ingredients14" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.cocktail.strIngredientMeasure15}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_14"
+                app:visibleGone="@{model.cocktail.strIngredientMeasure15}"
+                tools:text="Ingredients15" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

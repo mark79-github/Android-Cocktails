@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Android Cocktails</string>
+    <string name="cocktail_size">Cocktails: %d</string>
+    <string name="cocktail_name_label">Name</string>
+    <string name="cocktail_type_of_glass_label">Type of glass</string>
+    <string name="cocktail_instructions_label">Instructions</string>
+    <string name="cocktail_btn_like_image_description">Add/remove to favourites</string>
+    <string name="cocktail_logo_image_description">Logo</string>
+    <string name="cocktail_recipe_label">Recipe</string>
+</resources>
